@@ -1,26 +1,20 @@
-# is mi
+# create a node package module
 
-long long ago, in i'm a child.
-
-At that time, I was still in school and my English class was terrible.
-
-In class, the foreign language teacher asked me to go to the podium to write English words.
-
-and I wrote "This is mi" .
-
-My classmates laughed uncontrollably when they saw it,
-
-and then they called me 'is mi'
+This package is used to generate a node package based on `typescript`, built using `rollup`, formatted using `prettier`, and checked using `eslint`
 
 ## install
 
 ```sh
-npm install  -g  ismi
+npm install  -g create-a-npm
+```
+
+## use
+
+```sh
+#  Non essential installation
+npm create a-npm
 ```
 
 ## Other languages
 
-<table><tr>
-<td><a href="https://github.com/lmssee/ismi/blob/main/ReadMe.md"  target="_self">English</a></td>
-<td><a href="https://github.com/lmssee/ismi/blob/main/自述文件.md"  target="_self">中文</a></td>
-</tr></table>
+[English](https://github.com/lmssee/ismi/blob/main/README.md) [中文](https://github.com/lmssee/ismi/blob/main/自述文件.md)
