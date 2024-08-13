@@ -1,5 +1,7 @@
+import { runOtherCode } from 'a-node-tools';
+import { mkdirSync } from 'node:fs';
 import test from 'node:test';
-import { createPackage } from 'src/createPackage';
+import { createNpm } from 'src/createNpm';
 import data from 'src/data';
 
 /**
@@ -14,8 +16,19 @@ import data from 'src/data';
  */
 
 /// 这里重置了该文件夹，并在该文件夹下进行操作
-data.name = 'test';
+data.name = 'test/test';
 
+/**
+ *
+ * 实际在测试的是否清理了在 test 文件夹的内容
+ *
+ * 并在清理后进行了新建
+ */
 test('测试生成文件库相关数据', async () => {
-  createPackage();
+  /// 测试清理旧的创建的文件
+  await runOtherCode(`ixxx rm ${data.cwd}`);
+  /// 创建新的文件
+  mkdirSync(data.cwd);
+
+  createNpm();
 });

@@ -17,6 +17,7 @@ export default {
       exports: 'named',
       dir: 'dist/mjs',
     },
+    //  shell
     // {
     //   format: 'cjs',
     //   entryFileNames: '[name].cjs',

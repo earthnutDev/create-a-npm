@@ -22,7 +22,12 @@ const packageJsonData = readFileToJsonSync(pathJoin(cwd, 'package.json'));
 
 /** 导出构建数据 */
 export default {
+  /** 工作目录 */
   cwd: '',
+  /** 创建文件的路径 */
+  fileName(str: string): string {
+    return pathJoin(this.cwd, str);
+  },
   /** 项目名称
    *
    * 该值在 askForName 中进行赋值
@@ -49,10 +54,6 @@ export default {
   package: {
     /**包名称  */
     name: '',
-    /** 版本号  */
-    version: '0.0.0',
-    /** 类型 */
-    type: 'module',
     /** 依赖 */
     dependencies: packageJsonData.dependencies || {},
     /** 开发依赖 */

@@ -7,3 +7,9 @@ dist
 
 ## 测试
 test/out
+
+## 测试
+
+test/test
+
+.DS_Store
