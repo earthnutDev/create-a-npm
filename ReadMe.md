@@ -17,4 +17,4 @@ npm create a-npm
 
 ## Other languages
 
-[English](https://github.com/lmssee/ismi/blob/main/README.md) [中文](https://github.com/lmssee/ismi/blob/main/自述文件.md)
+[English](https://github.com/lmssee/createANpm/blob/main/README.md) [中文](https://github.com/lmssee/createANpm/blob/main/自述文件.md)

@@ -17,12 +17,14 @@ const initData = () => ({
   author: '___  <___@___.___>  (https://___.___)',
   description:
     'here is the project description, please change the content with double underline',
-  script: {
+  scripts: {
     b: 'rollup --config rollup.config.js && tsc -p tsconfig.types.json',
     build: 'ixxx rm dist run b',
     diff: 'ixxx pkg diff',
+    eslint: 'ixxx cls && eslint src',
+    beautify: 'npm run prettier',
     prettier: 'ixxx cls && prettier . --write',
-    test: 'rollup --config rollup.config.test.js',
+    test: 'ixxx cls && rollup --config rollup.config.test.js && node test/out/test/index.mjs',
   },
   files: ['mjs', 'cjs', 'types'],
   exports: {

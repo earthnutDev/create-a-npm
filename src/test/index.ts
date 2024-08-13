@@ -15,10 +15,5 @@ export function testFile() {
 
   mkdirSync(testCwd);
 
-  writeFileSync(
-    pathJoin(testCwd, 'index.ts'),
-    `import { _p } from 'a-node-tools';
-// print 'hello world' on the terminal
-_p('hello world');`,
-  );
+  writeFileSync(pathJoin(testCwd, 'index.ts'), `import '../index'';`);
 }
