@@ -1,3 +1,12 @@
+/****************************************************************************
+ * @Author lmssee
+ * @Email lmssee@outlook.com
+ * @ProjectName create-a-npm
+ * @FileName data.ts
+ * @CreateDate  周五  08/30/2024
+ * @Description  数据中心
+ * 当配置包名时，后自动创建包的工作路径
+ ****************************************************************************/
 import {
   getDirectoryBy,
   initializeFile,

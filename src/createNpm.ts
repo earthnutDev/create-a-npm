@@ -1,3 +1,12 @@
+/****************************************************************************
+ * @Author lmssee
+ * @Email lmssee@outlook.com
+ * @ProjectName crate-a-npm
+ * @FileName createNpm.ts
+ * @CreateDate  周五  08/30/2024
+ * @Description 创建 npm 主要内容
+ * 该操作出现在命名完成后
+ ****************************************************************************/
 import askForName from './askForName';
 import custom from './custom';
 import data from './data';

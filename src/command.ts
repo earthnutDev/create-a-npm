@@ -1,3 +1,11 @@
+/****************************************************************************
+ * @Author lmssee
+ * @Email lmssee@outlook.com
+ * @ProjectName create-a-npm
+ * @FileName command.ts
+ * @CreateDate  周五  08/30/2024
+ * @Description 一个由 `a-command` 创建的 command 对象
+ ****************************************************************************/
 import { Command } from 'a-command';
 
 const command: Command = new Command('create-a-npm');

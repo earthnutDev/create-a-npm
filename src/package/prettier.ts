@@ -1,21 +1,36 @@
+/****************************************************************************
+ * @Author lmssee
+ * @Email lmssee@outlook.com
+ * @FileName prettier.ts
+ * @Date  周三  08/28/2024
+ * @Description 生成 prettier 规则的文件
+ *
+ * 包含：
+ * - .prettierignore  prettier 执行忽略文件
+ * - .prettierrc      prettier 配置文件
+ ****************************************************************************/
 import { writeFileSync } from 'node:fs';
 import data from 'src/data';
 import { writeToJsonFile } from 'src/tools';
+
 /**
  * 导出 prettier 的相关配置文件
+ *
+ * 生成包含：
+ * - .prettierignore  prettier 执行忽略文件
+ * - .prettierrc      prettier 配置文件
  */
-
 export function prettier(): void {
   // 写入 prettier ignore 忽略规则
   writeFileSync(
     data.fileName('.prettierignore'),
-    `node_modules/*
+    `node_modules
 
-*/node_modules
+**/node_modules
 
 ## 打包文件
 
-list
+dist
 
 test/out
 

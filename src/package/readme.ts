@@ -32,13 +32,13 @@ export function readme(): void {
   /// 生成 .gitignore 文件
   writeFileSync(
     data.fileName('.gitignore'),
-    `node_modules/*
+    `node_modules
 
-*/node_modules
+**/node_modules
 
 ## 打包文件
 
-list
+dist
 
 test/out
 
