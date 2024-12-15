@@ -57,7 +57,7 @@ const initData = () => ({
   },
   repository: {
     type: 'git',
-    url: `git+https://github.com/___/${data.name}.git')`,
+    url: `git+https://github.com/___/${data.name}.git`,
   },
   publishConfig: {
     access: 'public',
