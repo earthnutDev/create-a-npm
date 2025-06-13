@@ -1,7 +1,7 @@
 {
   "name": "create-a-npm",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1-canary.20250614",
   "description": "一个一键生成一个符合特定规则 <就是一个简单的代码模板库> 的 npm 包",
   "scripts": {
     "beautify": "npm run prettier",
@@ -10,7 +10,7 @@
     "diff": "jja pkg --diff",
     "prettier": "prettier . --write",
     "eslint": "eslint src",
-    "dev": "jja rm dist eg && npm run b && create_a_npm_dev=false node --trace-warnings  dist/bin.mjs -eg",
+    "dev": "jja rm dist eg && npm run b && create_a_npm_dev=all node --trace-warnings  dist/bin.mjs -eg",
     "push:version": "gvv",
     "push:submit": "gvv",
     "vjj": "vjj",
