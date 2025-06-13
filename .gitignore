@@ -2,14 +2,9 @@
 node_modules/
 
 # 打包
-
 dist
 
 ## 测试
-test/out
-
-## 测试
-
-test/test
+eg
 
 .DS_Store
