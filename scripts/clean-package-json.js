@@ -7,9 +7,13 @@ import {
 
 let packageJson = readFileToJsonSync('./package.json');
 
-['scripts', 'devDependencies', 'lint-staged', 'private'].forEach(
-  key => delete packageJson[key],
-);
+[
+  'scripts',
+  // 本应用比较依赖于 devDependencies
+  // 'devDependencies',
+  'lint-staged',
+  'private',
+].forEach(key => delete packageJson[key]);
 
 packageJson = {
   ...packageJson,
