@@ -108,6 +108,7 @@ export const dataStore: DataType = {
       'a-command': pen['a-command'] || '^2.3.8',
       'a-node-tools': pen['a-node-tools'] || '^4.2.6',
       gvv: devPen['gvv'] || '^0.0.7',
+      tslib: devPen['tslib'] || '^2.8.1',
       jja: devPen['jja'] || '^2.3.8',
       pjj: devPen['pjj'] || '^1.0.1',
       vjj: devPen['vjj'] || '^1.0.5',
