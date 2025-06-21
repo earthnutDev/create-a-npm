@@ -1,7 +1,7 @@
 import { waiting } from './../waiting';
 import { command } from '../command';
 import { isUndefined } from 'a-type-of-js';
-import { dirEmpty, getNpmPkgInfo } from 'a-node-tools';
+import { getNpmPkgInfo, isEmptyDir } from 'a-node-tools';
 import { brightRedPen, hexPen, magentaPen } from 'color-pen';
 import { dataStore } from '../data-store';
 import { mkdirSync } from 'node:fs';
@@ -29,7 +29,7 @@ export async function createCatalog(pkgName: string): Promise<boolean> {
   /**
    * 查看是否当前有项目名是否为空
    */
-  const dirIsEmpty = dirEmpty(filePath);
+  const dirIsEmpty = isEmptyDir(filePath);
   // 检测出当前目录下包含同名包且不为空
   if (dirIsEmpty == 0) {
     const tip = ['更换为其他名称', '直接退出'];

@@ -8,7 +8,9 @@ export function createScripts() {
 
   const { author } = dataStore.local;
 
-  const name = dataStore.name.replace(/^@/, '');
+  const nameList = dataStore.name.replace(/^@/, '').split('/');
+
+  const name = nameList[0];
 
   writeFileSync(
     dataStore.pkgFile('scripts/clean-package-json.js'),
@@ -61,7 +63,7 @@ packageJson = {
   engines: {
     node: '>=18.0.0',
   },
-  keywords: ['${name}'],
+  keywords: ['${name}', '${nameList[0]}'],
   homepage: '${author.url}',
   bugs: {
     url: 'https://github.com/${author.name}/${name}/issues',
