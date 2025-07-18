@@ -23,7 +23,7 @@ packageJson = {
     url: 'https://earthnut.dev',
   },
 
-  files: ['src', 'bin.mjs'],
+  files: ['bin.mjs'],
   keywords: ['crate-a-npm', 'create-a-pkg', 'earthnut'],
   repository: {
     type: 'git',
