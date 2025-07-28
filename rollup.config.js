@@ -27,6 +27,7 @@ export default {
       'src/data-store',
       'src/data-store/licenseText',
       'src/createChild/createLicense',
+      'src/data-store/commandParameters',
     ],
     ignore: ['node:'],
   }),

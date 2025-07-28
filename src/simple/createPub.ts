@@ -1,9 +1,12 @@
 import { pathJoin } from 'a-node-tools';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dataStore } from 'src/data-store';
+import { commandParameters } from 'src/data-store/commandParameters';
+import { createCI } from 'src/utils';
 
 /**  写入 pub.sh  */
 export function createPub() {
+  const { manager } = commandParameters;
   mkdirSync(pathJoin(dataStore.pkgFile('scripts')), { recursive: true });
 
   writeFileSync(
@@ -29,9 +32,9 @@ if ! tag=$(npx "\${CHECK_VERSION}" c=. 2>&1); then
 fi
 echo "获取🉐发布标签为 \${tag}"
 # 依赖安装
-npm ci
+${createCI()}
 # 构建项目
-if ! npm run build; then 
+if ! ${manager.value} run build; then 
   echo "构建失败" 
   exit 0
 fi
@@ -47,7 +50,7 @@ set -e
 
 cd "dist"
 echo "开始发布 npm 包 \${tag} 版本"
-if ! npm publish --provenance --access public --tag "\${tag}"; then
+if ! ${manager.value} publish --provenance --access public --tag "\${tag}" --no-git-checks; then
     echo "发布失败" 
     exit 1
 fi

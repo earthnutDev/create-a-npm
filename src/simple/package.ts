@@ -1,9 +1,11 @@
 import { PackageJson } from 'a-node-tools';
 import { dataStore } from '../data-store';
 import { writeToJsonFile } from '../utils';
+import { commandParameters } from 'src/data-store/commandParameters';
 
 /** 生成 package.json 文件内容  */
 export function packageJson() {
+  const { manager } = commandParameters;
   const { dependencies: de } = dataStore.local;
   const ts = de.includes('typescript');
 
@@ -27,7 +29,7 @@ export function packageJson() {
     description: '',
     scripts: {
       b: `rollup --config rollup.config.js${dataStore.bin !== 1 && ts ? ' && tsc -p tsconfig.types.json' : ''}`,
-      build: 'jja cls rm dist && npm run b && npm run clean:package',
+      build: `jja cls rm dist && ${manager.value} run b && ${manager.value} run clean:package`,
       'clean:package': 'node scripts/clean-package-json.js',
       diff: 'jja pkg --diff=官方',
       prepublishOnly: 'pjj',

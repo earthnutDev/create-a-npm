@@ -1,8 +1,10 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dataStore } from 'src/data-store';
+import { commandParameters } from 'src/data-store/commandParameters';
 
 /**  构建 github action CI/CD  */
 export function createAction() {
+  const { manager } = commandParameters;
   /**  dir  */
   const dir = '.github/workflows';
   // 创建外层目录
@@ -56,7 +58,48 @@ jobs:
         with:
           node-version: 22.x
           registry-url: https://registry.npmjs.org
+            ${
+              manager.value === 'pnpm'
+                ? `
+      - name: pnpm 安装
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+          run_install: false
 
+      - name: 缓存 pnpm
+        id: pnpm-store
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: \${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: \${{ runner.os }}-pnpm-store-\${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            \${{ runner.os }}-pnpm-store-
+        `
+                : manager.value === 'yarn'
+                  ? `
+        - name: yarn 安装
+          uses: actions/setup-yarn@v4
+          with:
+            version: '1.22' 
+        - name: 获取 yarn 缓存路径
+          id: yarn-cache-path
+          run: echo "CACHE_PATH=$(yarn cache dir)" >> $GITHUB_OUTPUT # 获取 Yarn 全局环衬路径
+          
+        - name: 缓存 Yarn 依赖
+          uses: actions/cache@v4
+          with: 
+            path: \${{ steps.yarn-cache-path.outputs.CACHE_PATH }} # 缓存 Yarn 全局缓存目录
+            key: \${{ runner.os }}-yarn-cache-\${{ hashFiles('yarn.lock) }} # 基于 yarn.lock 哈希值生成唯一的 key
+            restore-keys: |
+               \${{ runner.os }}-yarn-cache # 缓存未命中时，按前缀恢复最近的缓存 
+        `
+                  : ''
+            }
+       
       - name: 发布到 npm
         env:
           NODE_AUTH_TOKEN: \${{secrets.NPM_TOKEN}}

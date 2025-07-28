@@ -18,6 +18,7 @@ import { DataType } from 'src/types';
 import { originDependencies } from './origin-dependencies';
 import { dog } from 'src/dog';
 import { isUndefined } from 'a-type-of-js';
+import { commandParameters } from './commandParameters';
 
 /** 初始化当前工作文件路径  */
 const [__dirname] = initializeFile();
@@ -156,4 +157,5 @@ export const dataStore: DataType = {
     dog('构建的依赖图', result);
     return result;
   },
+  commandParameters: commandParameters,
 };

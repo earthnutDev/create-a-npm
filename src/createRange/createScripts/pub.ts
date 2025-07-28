@@ -1,7 +1,10 @@
 import { writeFileSync } from 'node:fs';
 import { dataStore } from 'src/data-store';
+import { commandParameters } from 'src/data-store/commandParameters';
+import { createCI } from 'src/utils';
 /**  构建发布  */
 export function pub() {
+  const { manager } = commandParameters;
   writeFileSync(
     dataStore.rangeFile('scripts/pub.sh'),
     `#!/bin/bash
@@ -40,8 +43,8 @@ update_version() {
     cd "$CWD"
 
     # 依赖安装 
-    npm ci
-    if ! npm run build; then 
+    ${createCI()}
+    if ! ${manager.value} run build; then 
       echo "构建 $NAME 失败" 
       PUB_ERROR+=("$input")
       return 0
@@ -55,7 +58,7 @@ update_version() {
     cd "\${BUILD_DIST}" 
     
     echo "开始发布 $NAME npm 包 \${tag} 版本"
-    if ! npm publish --provenance --access public --tag "\${tag}" ; then
+    if ! ${manager.value} publish --provenance --access public --tag "\${tag}" --no-git-checks; then
         echo "💥💥💥 $NAME 发布到 npm 💥💥💥"
         PUB_ERROR+=("$input")
     else 

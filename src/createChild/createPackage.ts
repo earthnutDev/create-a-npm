@@ -1,8 +1,11 @@
 import { PackageJson, writeJsonFile } from 'a-node-tools';
 import { dataStore } from 'src/data-store';
+import { commandParameters } from 'src/data-store/commandParameters';
 
 /**  构建 package.json  */
 export function createPackage() {
+  const { manager } = commandParameters;
+
   const { dependencies: de } = dataStore.local;
   const ts = de.includes('typescript');
 
@@ -19,7 +22,7 @@ export function createPackage() {
     description: '写点什么吧，空白只本应存在于虚空',
     scripts: {
       b: `rollup --config rollup.config.js${ts || dataStore.bin !== 1 ? ` && tsc -p tsconfig.types.json` : ''}`,
-      build: 'npm run b && npm run clean:package',
+      build: `${manager.value} run b && ${manager.value} run clean:package`,
       test: 'jja rm .eg && rollup --config rollup.config.eg.js && node .eg/index.mjs',
       'push:version': 'gvv',
       push: 'gvv',

@@ -19,6 +19,7 @@ import { dataStore } from './data-store';
 import { randomPen } from 'color-pen';
 import { command } from './command';
 import { waiting } from './waiting';
+import { commandParameters } from './data-store/commandParameters';
 
 /**
  *
@@ -59,4 +60,12 @@ export async function exitProgram(
   cursorShow();
   colorLine('终结线', true);
   return command.end();
+}
+
+/**  构建安装  */
+export function createCI() {
+  const { manager } = commandParameters;
+  return manager.value === 'pnpm'
+    ? 'pnpm install --frozen-lockfile --prod=false'
+    : manager.value + ' ci';
 }

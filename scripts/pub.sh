@@ -27,29 +27,19 @@ fi
 # 确保脚本在遇见错误时立即退出
 set -e
 
-cd "dist"
-echo "开始发布 npm 包 ${tag} 版本"
-if ! pnpm publish --provenance --access public --tag "${tag}"  --no-git-checks; then
-    echo "发布失败" 
-    exit 1
-fi
+publish() {
+    cd "dist"
+    echo "开始发布 npm 包 ${tag} 版本"
+    if ! pnpm publish --provenance --access public --tag "${tag}"  --no-git-checks; then
+        echo "发布失败" 
+        exit 1
+    fi
 
-cd ../
-if [ -f "./scripts/change-name.js" ]; then 
-  node ./scripts/change-name.js
-  cd "dist"
-else
-echo "🪧 create-a-npm 发布终结 🫧🫧🫧🫧🫧🫧"
-fi
-
-echo "开始发布 npm 包 ${tag} 版本"
-if ! pnpm publish --provenance --access public --tag "${tag}"  --no-git-checks; then
-    echo "发布失败" 
-    exit 1
-else 
+    cd ../
+}
+publish
+node ./scripts/change-name.js
+publish
 echo "🪧 create-a-pkg  发布终结 🫧🫧🫧🫧🫧🫧"
-fi
 
-
-echo "🚀🚀  发布成功，完结 🎉🎉 撒花 🎉🎉"
 

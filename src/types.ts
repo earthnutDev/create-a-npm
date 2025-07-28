@@ -23,6 +23,17 @@ export type LocalConfig = {
   dependencies: Dependencies[];
 };
 
+export type acceptManagerValue = 'npm' | 'yarn' | 'pnpm' | '';
+
+/**  命令参数解析值  */
+export type CommandParameters = {
+  /**  nodeJs 的包管理器  */
+  manager: {
+    value: acceptManagerValue;
+    accept: ['npm', 'yarn', 'pnpm'];
+  };
+};
+
 export type DataType = {
   /** 工作目录 */
   cwd: string;
@@ -62,6 +73,8 @@ export type DataType = {
   childPkg: boolean;
   /**  本读的数据  */
   local: LocalConfig;
+  /**  nodeJs 包冠霖器  */
+  commandParameters: CommandParameters;
   /**  是否安装依赖  */
   install: boolean;
   /** 包中需要的内容  */

@@ -29,7 +29,7 @@ packageJson = {
     type: 'git',
     url: 'git+https://github.com/earthnutDev/create-a-npm.git',
   },
-  homepage: 'https://earthnut.dev/create-a-npm',
+  homepage: 'https://earthnut.dev/npm/create-a-npm',
   bugs: {
     url: 'https://github.com/earthnutDev/create-a-npm/issues',
     email: 'earthnut.dev@outlook.com',

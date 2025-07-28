@@ -8,7 +8,12 @@
  ************************************************/
 import { Command } from 'a-command';
 
-const command = new Command('create-a-npm');
+const command = new Command<{
+  /**  包管理器  */
+  manager: undefined;
+}>('create a npm');
+
+command.bind(['manager <-m> (包管理器)']);
 
 // 执行，并在触发 -h、-v 时直接结束应用
 command.run().isEnd(true);
